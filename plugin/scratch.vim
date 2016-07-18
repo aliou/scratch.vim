@@ -26,9 +26,12 @@ function! s:PreviewScratch(...)
   execute "set ft=" . filetype
 endfunction
 
+" TODO: Use a default filetype.
 function! s:Scratch(...)
   if a:0 == 1
     let filetype = a:1
+  else
+    let filetype = ""
   endif
 
   let scratch_filename = s:CreateScratchFile()
