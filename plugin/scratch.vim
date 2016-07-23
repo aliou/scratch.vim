@@ -30,7 +30,7 @@ endfunction
 
 function! s:PreviewScratch(...)
   let scratch_filename = s:CreateScratchFile()
-  let scratch_filetype = s:ScratchFiletype(a:1)
+  let scratch_filetype = s:ScratchFiletype(a:000)
 
   " Cheating by opening a small vertical split instead of a preview window.
   execute "10 new " . scratch_filename
