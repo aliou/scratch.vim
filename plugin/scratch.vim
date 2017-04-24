@@ -1,6 +1,6 @@
 " scratch.vim - Create scratch files from Vim.
 " Maintainer:   Aliou Diallo <https://aliou.me>
-" Version:      0.1.0
+" Version:      0.2.0
 
 if exists('g:loaded_scratch') || &cp
   finish
