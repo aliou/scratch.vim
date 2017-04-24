@@ -7,10 +7,16 @@ if exists('g:loaded_scratch') || &cp
 endif
 let g:loaded_scratch = 1
 
-function! s:Scratch()
+function! s:Scratch(...)
   let scratch_filename = tempname()
+  if len(a:000) == 1
+    let filetype = a:1
+  else
+    let filetype = ''
+  endif
 
   execute '10 new ' . scratch_filename
+  execute 'set ft=' . filetype
 endfunction
 
-command! -nargs=? Scratch call s:Scratch()
+command! -nargs=? Scratch call s:Scratch(<f-args>)
