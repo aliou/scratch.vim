@@ -15,8 +15,11 @@ function! s:Scratch(...)
     let filetype = ''
   endif
 
+  " Open with 10 lines.
   execute '10 new ' . scratch_filename
-  execute 'set ft=' . filetype
+
+  " Set the filetype to the one given if present.
+  execute 'set filetype=' . filetype
 endfunction
 
 command! -nargs=? Scratch call s:Scratch(<f-args>)
