@@ -18,9 +18,8 @@ function! s:NormalScratch(...)
 endfunction
 
 function! s:Scratch(filetype, ...)
-  let scratch_filename = tempname()
   " Open with 10 lines.
-  execute '10 new ' . scratch_filename
+  execute '10 new '
 
   " Set the filetype to the one given if present.
   execute 'set filetype=' . a:filetype
