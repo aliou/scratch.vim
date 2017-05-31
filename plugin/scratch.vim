@@ -7,19 +7,23 @@ if exists('g:loaded_scratch') || &cp
 endif
 let g:loaded_scratch = 1
 
-function! s:Scratch(...)
-  let scratch_filename = tempname()
-  if len(a:000) == 1
+function! s:NormalScratch(...)
+  if len(a:000) >= 1
     let filetype = a:1
   else
     let filetype = ''
   endif
 
+  call s:Scratch(filetype)
+endfunction
+
+function! s:Scratch(filetype, ...)
+  let scratch_filename = tempname()
   " Open with 10 lines.
   execute '10 new ' . scratch_filename
 
   " Set the filetype to the one given if present.
-  execute 'set filetype=' . filetype
+  execute 'set filetype=' . a:filetype
 
   " Disable text width.
   execute 'setlocal tw=0'
@@ -28,4 +32,4 @@ function! s:Scratch(...)
   execute 'set winfixheight'
 endfunction
 
-command! -nargs=? Scratch call s:Scratch(<f-args>)
+command! -nargs=? Scratch call s:NormalScratch(<f-args>)
