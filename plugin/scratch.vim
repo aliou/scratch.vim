@@ -30,6 +30,9 @@ function! s:Scratch(filetype, ...)
 
   " Fix window height.
   execute 'set winfixheight'
+
+  " Prevent writing the file to disk
+  execute 'set buftype=nofile'
 endfunction
 
 command! -nargs=? Scratch call s:NormalScratch(<f-args>)
