@@ -32,6 +32,11 @@ function! s:Scratch(filetype, ...)
 
   " Prevent writing the file to disk
   execute 'set buftype=nofile'
+
+  if a:0 == 1
+    call append(line('.'), split(a:1, "\n"))
+    normal gg"_dd
+  endif
 endfunction
 
 command! -nargs=? Scratch call s:NormalScratch(<f-args>)
