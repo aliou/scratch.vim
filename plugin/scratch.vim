@@ -20,6 +20,9 @@ function! s:Scratch(...)
 
   " Set the filetype to the one given if present.
   execute 'set filetype=' . filetype
+
+  " Disable text width.
+  execute 'setlocal tw=0'
 endfunction
 
 command! -nargs=? Scratch call s:Scratch(<f-args>)
