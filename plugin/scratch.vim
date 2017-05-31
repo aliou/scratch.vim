@@ -23,6 +23,9 @@ function! s:Scratch(...)
 
   " Disable text width.
   execute 'setlocal tw=0'
+
+  " Fix window height.
+  execute 'set winfixheight'
 endfunction
 
 command! -nargs=? Scratch call s:Scratch(<f-args>)
