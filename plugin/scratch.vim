@@ -7,6 +7,26 @@ if exists('g:loaded_scratch') || &cp
 endif
 let g:loaded_scratch = 1
 
+function! s:VisualScratch(...)
+  " Store previous content of register `z`.
+  let old_z = @z
+
+  if len(a:000) >= 1
+    let filetype = a:1
+  else
+    let filetype = ''
+  endif
+
+  " Yank visually selected content into register `z`.
+  normal! gv"zy
+
+  " Open scratch file with filetype and content.
+  call s:Scratch(filetype, @z)
+
+  " Restore original content of register `z`.
+  let @z = old_z
+endfunction
+
 function! s:NormalScratch(...)
   if len(a:000) >= 1
     let filetype = a:1
@@ -40,3 +60,4 @@ function! s:Scratch(filetype, ...)
 endfunction
 
 command! -nargs=? Scratch call s:NormalScratch(<f-args>)
+command! -range=% -nargs=? VScratch call s:VisualScratch(<f-args>)
